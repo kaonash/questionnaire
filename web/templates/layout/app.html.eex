@@ -7,29 +7,31 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Questionnaire!</title>
+    <title>Questionnaire</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <style>
+      .received-message {
+        color: #555;
+        font-style: italic;
+        padding: 10px 0 5px;
+        border-bottom: 1px solid #ddd;
+      }
+      .recieved-message:first-child {
+        font-size: 2em;
+      }
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-
+    <div class="container" role="main">
+      <form class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control" id="input-send-message">
+        </div>
+      </form>
+      <div id="received-message">
+      </div>
     </div> <!-- /container -->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

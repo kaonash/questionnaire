@@ -2,7 +2,7 @@ defmodule Questionnaire.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "rooms:*", Questionnaire.RoomChannel
+  channel "rooms:*", Questionnaire.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket,
