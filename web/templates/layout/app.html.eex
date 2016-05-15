@@ -19,6 +19,7 @@
       .recieved-message:first-child {
         font-size: 2em;
       }
+    </style>
   </head>
 
   <body>
