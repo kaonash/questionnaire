@@ -112,6 +112,11 @@ $(function () {
 });
 
 function updateChart(data) {
+  a = data[0][1];
+  b = data[1][1];
+  c = data[2][1];
+  d = data[3][1];
+
   var chart = $("#chart").highcharts();
     chart.series[0].setData(data);
 };
