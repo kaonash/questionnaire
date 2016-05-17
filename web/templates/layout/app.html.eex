@@ -24,6 +24,8 @@
 
   <body>
     <div class="container" role="main">
+      <div id="chart"></div>
+      <div id="received-message"></div>
       <form class="form-inline">
         <div class="form-group">
           <input type="text" class="form-control" id="input-send-message">
@@ -33,9 +35,6 @@
           <input type="button" value="D" id="d-button">
         </div>
       </form>
-      <div id="received-message">
-      </div>
-      <div id="chart"></div>
     </div> <!-- /container -->
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="<%= static_path(@conn, "/js/highcharts.js") %>"></script>
