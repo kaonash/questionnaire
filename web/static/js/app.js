@@ -1,6 +1,6 @@
 import {Socket} from "phoenix"
 
-var a = 1;
+var a = 0;
 var b = 0;
 var c = 0;
 var d = 0;
