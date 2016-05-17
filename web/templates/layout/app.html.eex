@@ -34,8 +34,9 @@
           質問・感想など：<input type="text" class="form-control" id="input-send-message" size='60'>
         </div>
       </form>
-      <input type="button" value="reset" id="reset-button">
       <div id="received-message"></div>
+      <br><br><br><br><br><br><br><br><br>
+      <input type="button" value="reset" id="reset-button">
     </div> <!-- /container -->
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="<%= static_path(@conn, "/js/highcharts.js") %>"></script>
