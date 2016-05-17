@@ -1251,6 +1251,13 @@ $(function () {
         d = d + 1;
         channel.push("send_data", { data: [['A', a], ['B', b], ['C', c], ['D', d]] });
     });
+    $("#reset-button").click(function () {
+        a = 0;
+        b = 0;
+        c = 0;
+        d = 0;
+        channel.push("send_data", { data: [['A', a], ['B', b], ['C', c], ['D', d]] });
+    });
 });
 
 function updateChart(data) {

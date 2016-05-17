@@ -34,6 +34,7 @@
           質問・感想など：<input type="text" class="form-control" id="input-send-message" size='60'>
         </div>
       </form>
+      <input type="button" value="reset" id="reset-button">
       <div id="received-message"></div>
     </div> <!-- /container -->
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
