@@ -24,17 +24,17 @@
 
   <body>
     <div class="container" role="main">
+      <input type="button" value="A" id="a-button" style="width:20%;">
+      <input type="button" value="B" id="b-button" style="width:20%;">
+      <input type="button" value="C" id="c-button" style="width:20%;">
+      <input type="button" value="D" id="d-button" style="width:20%;">
       <div id="chart"></div>
-      <div id="received-message"></div>
       <form class="form-inline">
         <div class="form-group">
-          <input type="text" class="form-control" id="input-send-message">
-          <input type="button" value="A" id="a-button">
-          <input type="button" value="B" id="b-button">
-          <input type="button" value="C" id="c-button">
-          <input type="button" value="D" id="d-button">
+          質問・感想など：<input type="text" class="form-control" id="input-send-message" size='60'>
         </div>
       </form>
+      <div id="received-message"></div>
     </div> <!-- /container -->
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="<%= static_path(@conn, "/js/highcharts.js") %>"></script>
