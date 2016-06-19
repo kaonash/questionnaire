@@ -1,5 +1,6 @@
 defmodule Questionnaire.RoomChannel do
   use Phoenix.Channel
+  alias Questionnaire.Aggregate
 
   def join("rooms:lobby", _auth_msg, socket) do
     {:ok, socket}
@@ -15,8 +16,44 @@ defmodule Questionnaire.RoomChannel do
   end
 
   def handle_in("send_data", %{"data" => data}, socket) do
+    aggregate = socket.assigns[:aggregate]
+    if (!aggregate) do
+      socket = assign(socket, :aggregate, Aggregate.initial_aggregate())
+      aggregate = socket.assigns[:aggregate]
+    else
+      a = Map.get(aggregate, :A)
+      aggregate = Map.put(aggregate, :A, a + 1)
+      socket = assign(socket, :aggregate, aggregate)
+    end
+    IO.puts(Map.get(aggregate, :A))
     broadcast! socket, "receive_data", %{data: data}
     {:noreply, socket}
   end
 
+  def handle_in("send_answer", %{"answer" => answer}, socket) do
+    aggregate = Questionnaire.Worker.lookup(:data)
+    if (!aggregate) do
+      aggregate = Aggregate.initial_aggregate
+    end
+    aggregate = Aggregate.increment(aggregate, answer)
+    Questionnaire.Worker.store(:data, aggregate)
+    broadcast! socket, "receive_data", aggregate
+    {:noreply, socket}
+  end
+
+  def handle_in("reset_answer", _param, socket) do
+    aggregate = Aggregate.initial_aggregate()
+    Questionnaire.Worker.store(:data, aggregate)
+    broadcast! socket, "receive_data", aggregate
+    {:noreply, socket}
+  end
+
+  def handle_in("get_aggregate", _param, socket) do
+    aggregate = Questionnaire.Worker.lookup(:data)
+    if (!aggregate) do
+      aggregate = Aggregate.initial_aggregate
+    end
+    broadcast! socket, "receive_data", aggregate
+    {:noreply, socket}
+  end
 end

@@ -21,8 +21,8 @@ channel.on("receive_message", function(dt) {
   $("#received-message").prepend(div);
 });
 
-channel.on("receive_data", function(dt) {
-  updateChart(dt.data);
+channel.on("receive_data", function(data) {
+  updateChart(data);
 });
 
 $(function () {
@@ -59,64 +59,31 @@ $(function () {
 
 $(function () {
   $("#a-button").click(function() {
-    a = a+1;
-    channel.push("send_data", {data: [
-        ['A',a],
-        ['B',b],
-        ['C',c],
-        ['D',d]
-    ]});
+    channel.push("send_answer", {answer: "A"});
   });
 
   $("#b-button").click(function() {
-    b = b+1;
-    channel.push("send_data", {data: [
-        ['A',a],
-        ['B',b],
-        ['C',c],
-        ['D',d]
-    ]});
+    channel.push("send_answer", {answer: "B"});
   });
 
   $("#c-button").click(function() {
-    c = c+1;
-    channel.push("send_data", {data: [
-        ['A',a],
-        ['B',b],
-        ['C',c],
-        ['D',d]
-      ]});
-    });
+    channel.push("send_answer", {answer: "C"});
+  });
 
   $("#d-button").click(function() {
-    d = d+1;
-    channel.push("send_data", {data: [
-        ['A',a],
-        ['B',b],
-        ['C',c],
-        ['D',d]
-    ]});
+    channel.push("send_answer", {answer: "D"});
   });
+
   $("#reset-button").click(function() {
-    a = 0;
-    b = 0;
-    c = 0;
-    d = 0;
-    channel.push("send_data", {data: [
-        ['A',a],
-        ['B',b],
-        ['C',c],
-        ['D',d]
-    ]});
+    channel.push("reset_answer");
   });
 });
 
-function updateChart(data) {
-  a = data[0][1];
-  b = data[1][1];
-  c = data[2][1];
-  d = data[3][1];
+$(function () {
+  channel.push("get_aggregate");
+})
 
+function updateChart(data) {
   var chart = $("#chart").highcharts();
-    chart.series[0].setData(data);
+  chart.series[0].setData([['A',data.A],['B',data.B],['C',data.C],['D',data.D]]);
 };

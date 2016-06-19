@@ -13,6 +13,7 @@ defmodule Questionnaire do
       supervisor(Questionnaire.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Questionnaire.Worker, [arg1, arg2, arg3]),
+      supervisor(Questionnaire.WorkerSupervisor, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
