@@ -1,10 +1,5 @@
 import {Socket} from "phoenix"
 
-var a = 0;
-var b = 0;
-var c = 0;
-var d = 0;
-
 var socket = new Socket("/socket");
 socket.connect();
 var channel = socket.channel("rooms:lobby", {});
@@ -43,10 +38,10 @@ $(function () {
                 type: 'pie',
                 name: '',
                 data: [
-                    ['A',a],
-                    ['B',b],
-                    ['C',c],
-                    ['D',d]
+                    ['A',0],
+                    ['B',0],
+                    ['C',0],
+                    ['D',0]
                 ]
             }],
             tooltip: {
