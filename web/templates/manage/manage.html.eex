@@ -1,0 +1,5 @@
+<div class="container" role="main">
+  <div id="chart"></div>
+  <div id="received-message"></div>
+  <input type="button" value="reset" id="reset-button">
+</div>

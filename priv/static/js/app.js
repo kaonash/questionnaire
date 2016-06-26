@@ -1178,11 +1178,6 @@ for (var i = 0; i < len; ++i) {
 
 var _phoenix = require("phoenix");
 
-var a = 0;
-var b = 0;
-var c = 0;
-var d = 0;
-
 var socket = new _phoenix.Socket("/socket");
 socket.connect();
 var channel = socket.channel("rooms:lobby", {});
@@ -1205,9 +1200,7 @@ channel.on("receive_data", function (data) {
 
 $(function () {
   $('#chart').highcharts({
-    title: {
-      text: 'アンケート結果'
-    },
+    title: { text: 'アンケート結果' },
     plotOptions: {
       pie: {
         dataLabels: {
@@ -1217,17 +1210,10 @@ $(function () {
         }
       }
     },
-    series: [{
-      type: 'pie',
-      name: '',
-      data: [['A', a], ['B', b], ['C', c], ['D', d]]
-    }],
-    tooltip: {
-      formatter: function formatter() {
+    series: [{ type: 'pie', name: '', data: [['A', 0], ['B', 0], ['C', 0], ['D', 0]] }],
+    tooltip: { formatter: function formatter() {
         return this.y + '人';
-      },
-      enabled: true
-    }
+      }, enabled: true }
   });
 });
 

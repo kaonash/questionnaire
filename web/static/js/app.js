@@ -21,36 +21,21 @@ channel.on("receive_data", function(data) {
 });
 
 $(function () {
-        $('#chart').highcharts({
-            title: {
-                text: 'アンケート結果'
-            },
-            plotOptions: {
-                pie: {
-                    dataLabels: {
-                         formatter: function() {
-                             return '<b>'+ this.point.name +'</b>:'+ Math.round(this.percentage*10)/10 + '%';
-                        }
-                    }
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: '',
-                data: [
-                    ['A',0],
-                    ['B',0],
-                    ['C',0],
-                    ['D',0]
-                ]
-            }],
-            tooltip: {
-                formatter: function() {
-                    return this.y +'人';},
-                enabled:true
-            }
-        });
-    });
+  $('#chart').highcharts({
+    title: { text: 'アンケート結果' },
+    plotOptions: {
+      pie: {
+        dataLabels: {
+          formatter: function() {
+            return '<b>'+ this.point.name +'</b>:'+ Math.round(this.percentage*10)/10 + '%';
+          }
+        }
+      }
+    },
+    series: [{ type: 'pie', name: '', data: [ ['A',0], ['B',0], ['C',0], ['D',0] ] }],
+    tooltip: { formatter: function() { return this.y +'人';}, enabled:true }
+  });
+});
 
 $(function () {
   $("#a-button").click(function() {
