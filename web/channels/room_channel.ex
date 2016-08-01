@@ -41,4 +41,9 @@ defmodule Questionnaire.RoomChannel do
     broadcast! socket, "receive_data", aggregate
     {:noreply, socket}
   end
+
+  def handle_in("send_question", %{"question" => question}, socket) do
+    broadcast! socket, "recieve_question", question
+    {:noreply, socket}
+  end
 end

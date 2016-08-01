@@ -16,6 +16,10 @@ channel.on("receive_message", function(dt) {
   $("#received-message").prepend(div);
 });
 
+channel.on("receive_question", function(question) {
+  updateQuestion(question);
+});
+
 channel.on("receive_data", function(data) {
   updateChart(data);
 });
@@ -35,6 +39,8 @@ $(function () {
     series: [{ type: 'pie', name: '', data: [ ['A',0], ['B',0], ['C',0], ['D',0] ] }],
     tooltip: { formatter: function() { return this.y +'人';}, enabled:true }
   });
+  // データの初期化を要求
+  channel.push("get_aggregate");
 });
 
 $(function () {
@@ -59,9 +65,9 @@ $(function () {
   });
 });
 
-$(function () {
-  channel.push("get_aggregate");
-})
+function updateQuestion(question) {
+  $('#question').text("test");
+};
 
 function updateChart(data) {
   var chart = $("#chart").highcharts();

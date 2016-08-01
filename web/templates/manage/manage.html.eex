@@ -1,4 +1,5 @@
 <div class="container" role="main">
+  <input type="button" value="send question" id="send_question">
   <div id="chart"></div>
   <div id="received-message"></div>
   <input type="button" value="reset" id="reset-button">
